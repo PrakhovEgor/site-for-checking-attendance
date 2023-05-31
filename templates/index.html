@@ -1,0 +1,63 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frame</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+</head>
+<body>
+<form method="POST" action="">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-md">
+        <a class="navbar-brand">Личный кабинет</a>
+        <ul class="nav justify-content-end">
+            {% if user["login"] == "superadmin@139" %}
+            <li class="nav-item m-1">
+                <input type="submit" class="btn btn-outline-secondary btn-sm" name="rate" value="Рейтинг">
+            </li>
+            <li class="nav-item m-1">
+                <input type="submit" class="btn btn-outline-secondary btn-sm" name="admin" value="Добавить станцию">
+            </li>
+            {% endif %}
+            <li class="nav-item m-1">
+                <input type="submit" class="btn btn-outline-danger btn-sm" name="logout" value="Выйти">
+            </li>
+        </ul>
+
+    </div>
+
+
+</nav><br>
+
+<div class="container-md">
+
+{% if user["name"] == "" %}
+<h2>Привет, Безымянный юзер!</h2>
+{% else %}
+<h2>Привет, {{ user["name"] }}!</h2>
+{% endif %}
+
+
+<h4>Ваш текущий 'score': <strong>{{score}}</strong></h4><br>
+
+{% if score != 0 %}
+<h1 class="display-6">Посещённые станции:</h1>
+<ul>
+{% for station in data %}
+<li>
+    <h6>
+    <a href={{ station[1] }} class="link-dark">{{ station[0] }}</a>
+    </h6>
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+</form>
+
+
+<h2>{{debug}}</h2>
+</div>
+</body>
+
+
+</html>

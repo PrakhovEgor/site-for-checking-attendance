@@ -1,0 +1,95 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #error{
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            color: red;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            width: 100%;
+            height: 60px;
+            padding: 1rem;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #but_g {
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #008000;
+            color: #fff;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        #but_r {
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #DC143C;
+            color: #fff;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        #but_dis {
+            width: 100;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #888888
+            color: #fff;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: 2rem 0;
+        }
+
+        form input[type="text"] {
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        #text{
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        #center{
+            margin-top: 5px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #time{
+        <!--/*    width: 30%;*/-->
+        <!--/*    margin-left: auto;*/-->
+        <!--/*    margin-right: auto;*/-->
+        <!--/*}*/-->

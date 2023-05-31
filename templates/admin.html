@@ -1,0 +1,123 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frame</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-md">
+        <a class="navbar-brand">Админка</a>
+        <form method="POST" action="">
+        <ul class="nav justify-content-end">
+            <li class="nav-item m-1">
+                <input type="submit" class="btn btn-outline-secondary btn-sm" name="rate" value="Рейтинг">
+            </li>
+            <li class="nav-item m-1">
+                <input type="submit" class="btn btn-outline-secondary btn-sm" name="prof" value="Профиль">
+            </li>
+            <li class="nav-item m-1">
+                <input type="submit" class="btn btn-outline-danger btn-sm" name="logout" value="Выйти">
+            </li>
+        </ul>
+        </form>
+
+    </div>
+
+</nav>
+
+<div class="container-md">
+<form method="POST" action="">
+    <div class="d-flex flex-column align-items-center">
+    <div class="container p-2">
+        <label for="exampleFormControlInput1" class="form-label">Название активности</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Название" name="activity_name">
+    </div>
+
+    <div class="container p-2">
+        <label for="exampleFormControlTextarea1" class="form-label">Дополнительный текст(при надобности)</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="extra_text"></textarea>
+    </div>
+
+    <div class="container p-2">
+        <input type="datetime-local" id="time"
+           name="timefrom" value="2023-05-13T10:30"
+           min="2000-01-01T00:00" max="2030-12-31T00:00">
+        <input type="datetime-local" id="time"
+           name="timeto" value="2023-05-13T12:30"
+           min="2000-01-01T00:00" max="2030-12-31T00:00">
+    </div>
+
+    {% if flag %}
+    <div class="alert alert-danger" role="alert">
+        {% if flag == 1 %}
+            Неправильный формат данных
+        {% elif flag == 2 %}
+            Такое название уже задействовано
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <input type="submit" class="btn btn-success"  name="add" value="Добавить">
+</div>
+
+<h1 class="display-3">Текущие активности:</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th>Название</th>
+      <th>Время начала</th>
+      <th>Время завершения</th>
+      <th>Дополнительный текст</th>
+      <th>Ссылка</th>
+      <th>Статус</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for item in data %}
+        <tr>
+            <th scope="row">{{ item["n"] }} </th>
+            <td>{{ item["name"] }}</td>
+            <td>{{ item["timefrom"] }}</td>
+            <td>{{ item["timeto"] }}</td>
+            <td>{{ item["extra_text"] }}</td>
+            <td><a href={{ item["url"] }}>{{ item["url"] }}</a></td>
+
+            <td>
+                {% if item["status"] == "Проходит" %}
+                    <span class="badge text-bg-success">
+                        {{ item["status"] }}
+                    </span>
+                {% elif item["status"] == "Не началось" %}
+                    <span class="badge text-bg-warning">
+                        {{ item["status"] }}
+                    </span>
+                {% else %}
+                    <span class="badge text-bg-secondary">
+                        {{ item["status"] }}
+                    </span>
+                {% endif %}
+            </td>
+
+            <td><input type="submit" class="btn btn-danger" name="{{ item.id }}" value="Удалить"></td>
+        </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+
+<h1> {{ debug }}</h1>
+</form>
+</div>
+</body>
+
+
+
+</html>
